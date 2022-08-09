@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olá mundo</title>
+</head>
+<body>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+
+    <div id="app"></div>
+
+    <script>
+        function MeuComponente() { 
+          //return React.createElement('div', null, 'Olá mundo!');
+          return (
+            React.createElement('div', {className: 'componente'},
+                React.createElement(MeuComponente1)
+            ) 
+          )
+        }
+
+        function MeuComponente1() { 
+            return (
+                React.createElement('div', {className: 'componente1'},
+                    React.createElement(MeuComponente2)
+                ) 
+            )         
+        }
+
+        function MeuComponente2() { 
+            return (
+                React.createElement('div', {className: 'componente2'},
+                    React.createElement(MeuComponente3)
+                ) 
+            )         
+        }
+
+        function MeuComponente3() { 
+            return (
+                React.createElement('div', {className: 'componente3', id: 'jorge'},
+                    React.createElement(MeuComponente4)
+                ) 
+            )         
+        }
+
+        function MeuComponente4() { 
+            return React.createElement('div', {className: 'componente4'}, 'Componente 4');
+
+        }
+
+    ReactDOM.render(
+        React.createElement(MeuComponente), document.getElementById('app')
+    );
+    </script>
+</body>
+</html>
